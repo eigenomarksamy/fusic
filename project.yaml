@@ -1,0 +1,32 @@
+schema_version: 1
+
+# fusic's manifest for the eigenomar ecosystem: what this repository is and
+# where its documents are. It points at documents and holds none of their
+# content. Update it in the same change that adds a document, CI or a
+# deployment.
+
+id: fusic
+name: fusic
+description: factory of music
+status: active
+tags: [music]
+
+links:
+  deployment: null                 # not deployed
+
+documents:
+  plan: docs/plan.md
+  architecture: null               # no code yet
+  engineering: null
+  decisions: null
+
+delivery:
+  ci: none
+  releases: none
+  deployment: none
+
+artifacts:
+  diagrams: null
+  test_reports: null
+  coverage: null
+  monitoring: null
