@@ -2,7 +2,8 @@
 
 fusic is a factory of music. Its development starts from scratch: nothing is
 built yet, and nothing is planned beyond this repository's ecosystem
-onboarding (EO1–EO6), of which only EO5 is open: it waits on the first code. The first release's tickets go here, in a lane of their
+onboarding (EO1–EO6), of which only EO5 is open: it waits on the first code,
+and its adoption of the ecosystem's standards (DOC1, SCM1). The first release's tickets go here, in a lane of their
 own, once they are planned.
 
 ## How this plan works
@@ -16,6 +17,8 @@ own, once they are planned.
   | Prefix | Lane |
   | --- | --- |
   | EO | Ecosystem onboarding |
+  | DOC | The product's documents: vision, architecture, design, testing strategy, and verification and validation |
+  | SCM | Source control and delivery: CI, branching, protection, releases and versioning |
 
   The session that plans the first release adds its lane to this table, with
   a prefix other than EO. The ecosystem's shared rules, which `CLAUDE.md`
@@ -44,6 +47,8 @@ own, once they are planned.
 | [EO4](#eo4) | `.gitattributes` with LF line endings | S | none | done |
 | [EO5](#eo5) | Linux and the lowercase drive letter | S | the first ticket that adds code | todo |
 | [EO6](#eo6) | An issue for every open ticket | S | the owner's approval | done |
+| [DOC1](#doc1) | The product's documents | M | `meta-eigenomar` ST1 | todo |
+| [SCM1](#scm1) | The ecosystem's SCM strategy | S | `meta-eigenomar` ST2 | todo |
 
 ## Parked
 
@@ -160,8 +165,53 @@ Answered by the owner on 2026-11-14:
    #1, which gets its blocked-by link once the first code ticket exists.
 2. **Fields for EO6:** EO5 at P2, as `infra`, in the backlog.
 
+## Ecosystem standards
+
+The ecosystem's contract, in `meta-eigenomar`, is adding two standards that
+every repository adopts: the documents each one keeps, and how each one
+manages its source and delivers it. DOC1 and SCM1 adopt them here, each once
+its standard is designed. Until then, their issues stay in the backlog. With
+no code yet, both can land before the first release is planned, so its first
+code starts with them.
+
+<a id="doc1"></a>
+
+### DOC1 · The product's documents · M
+
+- **Do:** write this repository's product vision, architecture, design,
+  testing strategy, and verification and validation (V&V) documents, in the
+  shape the ecosystem's document standard sets. Nothing exists yet beyond the
+  README's line that fusic is a factory of music, so the vision comes first,
+  and the architecture, design and testing strategy say what the first
+  release will build and how it will be checked. A document the first
+  release can't settle yet says so, and what settles it.
+- **Needs:** the ecosystem's document standard (`meta-eigenomar` ST1).
+- **Done when:** each of the five documents exists, or names the file or
+  section that holds it, and follows the standard's outline. `project.yaml`
+  names them under the standard's keys, and the ecosystem's validator passes.
+  Nothing in them is confidential, since this repository is public.
+
+<a id="scm1"></a>
+
+### SCM1 · The ecosystem's SCM strategy · S
+
+- **Do:** adopt the ecosystem's SCM strategy through its adoption checklist:
+  CI, branching, protection of `main`, versioning and releases, the health
+  report and dependency updates. There is no code, CI or deployment yet, so
+  what needs code, such as the CI job, is set up with the first ticket that
+  adds code, and the CI job is what [EO5](#eo5) records as covering Linux.
+- **Needs:** the ecosystem's SCM strategy (`meta-eigenomar` ST2).
+- **Done when:** every item on the checklist is applied here, recorded here as
+  an exception the strategy allows, with its reason, or, where it needs code,
+  named in the first code ticket's done-when. `project.yaml`'s `delivery` and
+  `CLAUDE.md` say what runs, and the ecosystem's validator passes.
+
 ## Log
 
+- 2026-11-18 · plan · Added DOC1 and SCM1, in two new lanes, at the owner's
+  request: this repository's adoption of the ecosystem's document standard and
+  SCM strategy, which are designed in `meta-eigenomar`. Each needs its
+  standard, so its issue waits in the backlog.
 - 2026-11-14 · EO4, EO6 · EO4 is done: `.gitattributes` with LF line endings,
   which staged nothing. EO6 is done: EO5, the one open ticket, is issue #1 in
   the ecosystem's Project, in the backlog until the first code ticket exists.
