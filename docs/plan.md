@@ -24,8 +24,12 @@ own, once they are planned.
   a prefix other than EO. The ecosystem's shared rules, which `CLAUDE.md`
   imports, say what to check before adding a lane.
 - **Each ticket** says what to do, what it needs, and when it is done. Its
-  "done when" is its acceptance criteria. Size is a rough guess: S is small,
-  M is medium, L is large.
+  "done when" is its acceptance criteria. Its size is on the ecosystem's
+  scale, the same value as its issue's `Size` in the ecosystem's GitHub
+  Project: xxs takes minutes, xs under an hour, s an hour or two, m about a
+  session, l two or three, xl four to six and xxl more. tbd means an open
+  decision or work not yet planned decides it. A change to one is made to the
+  other in the same session.
 - **Issues.** Every open ticket gets one GitHub issue in this repository. The
   issue's title starts with the ticket's id, and its body links the ticket's
   anchor here without copying it. The ticket holds the scope and history, and
@@ -41,14 +45,14 @@ own, once they are planned.
 
 | Ticket | Title | Size | Needs | Status |
 | --- | --- | --- | --- | --- |
-| [EO1](#eo1) | `project.yaml` | S | none | done |
-| [EO2](#eo2) | `CLAUDE.md` with the shared rules | S | none | done |
-| [EO3](#eo3) | Confidential work stays out | S | none | done |
-| [EO4](#eo4) | `.gitattributes` with LF line endings | S | none | done |
-| [EO5](#eo5) | Linux and the lowercase drive letter | S | the first ticket that adds code | todo |
-| [EO6](#eo6) | An issue for every open ticket | S | the owner's approval | done |
-| [DOC1](#doc1) | The product's documents | M | `meta-eigenomar` ST1 | todo |
-| [SCM1](#scm1) | The ecosystem's SCM strategy | S | `meta-eigenomar` ST2 | todo |
+| [EO1](#eo1) | `project.yaml` | s | none | done |
+| [EO2](#eo2) | `CLAUDE.md` with the shared rules | s | none | done |
+| [EO3](#eo3) | Confidential work stays out | s | none | done |
+| [EO4](#eo4) | `.gitattributes` with LF line endings | s | none | done |
+| [EO5](#eo5) | Linux and the lowercase drive letter | tbd | the first ticket that adds code | todo |
+| [EO6](#eo6) | An issue for every open ticket | s | the owner's approval | done |
+| [DOC1](#doc1) | The product's documents | tbd | `meta-eigenomar` ST1 | todo |
+| [SCM1](#scm1) | The ecosystem's SCM strategy | tbd | `meta-eigenomar` ST2 | todo |
 
 ## Parked
 
@@ -176,7 +180,7 @@ code starts with them.
 
 <a id="doc1"></a>
 
-### DOC1 · The product's documents · M
+### DOC1 · The product's documents · tbd
 
 - **Do:** write this repository's product vision, architecture, design,
   testing strategy, and verification and validation (V&V) documents, in the
@@ -193,7 +197,7 @@ code starts with them.
 
 <a id="scm1"></a>
 
-### SCM1 · The ecosystem's SCM strategy · S
+### SCM1 · The ecosystem's SCM strategy · tbd
 
 - **Do:** adopt the ecosystem's SCM strategy through its adoption checklist:
   CI, branching, protection of `main`, versioning and releases, the health
