@@ -57,7 +57,11 @@ own, once they are planned.
 ## Parked
 
 Ideas, not tickets: a row has no id and no issue until it is promoted to a
-ticket. Nothing is parked yet.
+ticket.
+
+| Idea | Why it waits | Becomes a ticket when |
+| --- | --- | --- |
+| The ecosystem's tab icon: every app under eigenomar.com shows eigenomar.com's lambda with its two colors swapped (shared decision SD5) | fusic has no page and no deployment yet | the first release plans a page served under eigenomar.com. Its lane takes the icon as a ticket, or as part of its deploy ticket |
 
 ## Ecosystem onboarding
 
@@ -212,6 +216,8 @@ code starts with them.
 
 ## Log
 
+- 2026-11-20 · plan · Parked the ecosystem's tab icon (shared decision SD5),
+  at the owner's request, until fusic plans a page served under eigenomar.com.
 - 2026-11-18 · plan · Added DOC1 and SCM1, in two new lanes, at the owner's
   request: this repository's adoption of the ecosystem's document standard and
   SCM strategy, which are designed in `meta-eigenomar`. Each needs its
