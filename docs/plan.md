@@ -1,10 +1,12 @@
 # fusic plan
 
 fusic is a factory of music. Its development starts from scratch: nothing is
-built yet, and nothing is planned beyond this repository's ecosystem
-onboarding (EO1–EO6), of which only EO5 is open: it waits on the first code,
-and its adoption of the ecosystem's standards (DOC1, SCM1). The first release's tickets go here, in a lane of their
-own, once they are planned.
+built yet. This plan holds the bootstrap (B1), the first code, which sets up
+the Python project, its tests and CI without any of the product yet. It also
+holds this repository's ecosystem onboarding (EO1–EO6), of which only EO5 is
+open, waiting on B1, and its adoption of the ecosystem's standards (DOC1,
+SCM1). The first release's tickets go here, in a lane of their own, once
+they are planned.
 
 ## How this plan works
 
@@ -16,6 +18,7 @@ own, once they are planned.
 
   | Prefix | Lane |
   | --- | --- |
+  | B | The bootstrap: the stack, the project skeleton, its tests and CI |
   | EO | Ecosystem onboarding |
   | DOC | The product's documents: vision, architecture, design, testing strategy, and verification and validation |
   | SCM | Source control and delivery: CI, branching, protection, releases and versioning |
@@ -45,11 +48,12 @@ own, once they are planned.
 
 | Ticket | Title | Size | Needs | Status |
 | --- | --- | --- | --- | --- |
+| [B1](#b1) | The walking skeleton: Python with uv, a test and CI on Linux | s | none | todo |
 | [EO1](#eo1) | `project.yaml` | s | none | done |
 | [EO2](#eo2) | `CLAUDE.md` with the shared rules | s | none | done |
 | [EO3](#eo3) | Confidential work stays out | s | none | done |
 | [EO4](#eo4) | `.gitattributes` with LF line endings | s | none | done |
-| [EO5](#eo5) | Linux and the lowercase drive letter | tbd | the first ticket that adds code | todo |
+| [EO5](#eo5) | Linux and the lowercase drive letter | xs | [B1](#b1) | todo |
 | [EO6](#eo6) | An issue for every open ticket | s | the owner's approval | done |
 | [DOC1](#doc1) | The product's documents | tbd | `meta-eigenomar` ST1 | todo |
 | [SCM1](#scm1) | The ecosystem's SCM strategy | tbd | `meta-eigenomar` ST2 | todo |
@@ -62,6 +66,53 @@ ticket.
 | Idea | Why it waits | Becomes a ticket when |
 | --- | --- | --- |
 | The ecosystem's tab icon: every app under eigenomar.com shows eigenomar.com's lambda with its two colors swapped (shared decision SD5) | fusic has no page and no deployment yet | the first release plans a page served under eigenomar.com. Its lane takes the icon as a ticket, or as part of its deploy ticket |
+
+## Bootstrap
+
+The first code: the stack, chosen by the owner on 2026-11-24, and a project
+every later ticket builds on, with its tests and a CI job, set up once. It
+holds none of the product yet: what fusic makes, and how, is the first
+release's to plan.
+
+<a id="b1"></a>
+
+### B1 · The walking skeleton: Python with uv, a test and CI on Linux · todo
+
+- **Do:** add the repository's first code, a Python project managed with
+  `uv`, which does nothing yet but run, and the checks every later ticket
+  runs.
+  - **Project:** `pyproject.toml` at the root, with the package in
+    `src/fusic/`, a `fusic` command, and `python -m fusic` running the same
+    entry point. The command prints its version with `--version`, and its
+    help without arguments. `uv.lock` and `.python-version` are committed.
+  - **Checks:** pytest, with a test of the command, and ruff for linting and
+    formatting, both as `uv` dev dependencies, so `uv run pytest` and
+    `uv run ruff check` work from a fresh clone after `uv sync`.
+  - **CI:** a GitHub Actions workflow on `ubuntu-latest`, on every push and
+    pull request, runs ruff and pytest through `uv`, and ends with a summary
+    of what it ran and every failure, as the ecosystem's conventions on
+    workflows ask. It's the job [EO5](#eo5) records as covering Linux, and
+    [SCM1](#scm1) later fits it to the ecosystem's SCM strategy.
+  - **Portability:** paths through `pathlib`, no absolute paths, and no
+    script that exists only as `.bat`, `.ps1` or `.sh`.
+- **Needs:** nothing. DOC1 and SCM1 may land before or after it: SCM1 adapts
+  the CI job, and DOC1's documents describe what B1 leaves.
+- **Done when:**
+  - [ ] after `uv sync`, `uv run fusic --version` and
+        `uv run python -m fusic --version` print the version on Windows.
+  - [ ] `uv run ruff check`, `uv run ruff format --check` and `uv run pytest`
+        pass on Windows, started from `c:\` as well as from `C:\`.
+  - [ ] the workflow passes on `ubuntu-latest`, and its run's summary lists
+        the checks it ran.
+  - [ ] the README says what to install on each platform, `uv` alone, and
+        how to set up and run the tests. `CLAUDE.md`'s commands section lists
+        the setup, test, lint and run commands, each working on Windows and
+        Linux, and what to run before pushing, and its delivery section says
+        what CI runs.
+  - [ ] in the same change as the workflow, `project.yaml`'s `delivery` says
+        `ci: github-actions`, and the ecosystem's validator passes.
+  - [ ] no build step or test needs anything but `uv` and the dependencies
+        it installs.
 
 ## Ecosystem onboarding
 
@@ -133,14 +184,14 @@ Each step is small and independent, and can be done between feature work.
 
 #### EO5 · Linux and the lowercase drive letter · todo
 
-- **Do:** there is nothing to run yet. Once the first ticket adds code and
-  tests, record here what covers Linux: a CI job on `ubuntu-latest`, a Linux
-  deployment build, or an accepted gap. Also check that the tests pass when
+- **Do:** once [B1](#b1) adds code and tests, record here what covers Linux:
+  B1's CI job on `ubuntu-latest`. Also check that the tests pass when
   started from a lowercase drive letter (`c:\`), as VS Code opens folders,
   since some tools break on the difference. The ecosystem's conventions give
-  the known fixes.
-- **Needs:** the first ticket that adds code. It isn't planned yet, so until
-  it is, this ticket's issue stays in the backlog with no blocked-by link.
+  the known fixes. The session that finishes B1 can do this too.
+- **Needs:** [B1](#b1), the first ticket that adds code, planned on
+  2026-11-24. Until then this ticket's issue was in the backlog with no
+  blocked-by link.
 - **Done when:** this section says what runs the tests on Linux, and the
   tests pass when started from `c:\` as well as from `C:\`.
 
@@ -216,6 +267,10 @@ code starts with them.
 
 ## Log
 
+- 2026-11-24 · plan · Added the bootstrap lane and B1, the walking skeleton,
+  at the owner's request: Python with `uv`, pytest and ruff, and a CI job on
+  `ubuntu-latest`, with none of the product yet. EO5's need is now B1, and
+  its size is xs, since B1 sets what it records.
 - 2026-11-20 · plan · Parked the ecosystem's tab icon (shared decision SD5),
   at the owner's request, until fusic plans a page served under eigenomar.com.
 - 2026-11-18 · plan · Added DOC1 and SCM1, in two new lanes, at the owner's
