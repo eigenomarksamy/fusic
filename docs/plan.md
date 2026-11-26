@@ -1,11 +1,11 @@
 # fusic plan
 
 fusic is a factory of music. Its development starts from scratch: nothing is
-built yet. This plan holds the bootstrap (B1), the first code, which sets up
+built yet. This plan holds the bootstrap (B2), the first code, which sets up
 the Python project, its tests and CI without any of the product yet. It also
-holds this repository's ecosystem onboarding (EO1–EO6), of which only EO5 is
-open, waiting on B1, and its adoption of the ecosystem's standards (DOC1,
-SCM1). The first release's tickets go here, in a lane of their own, once
+holds this repository's ecosystem onboarding (EO1–EO4, EO6 and EO13), of which only EO13 is
+open, waiting on B2, and its adoption of the ecosystem's standards (DOC7,
+SCM7). The first release's tickets go here, in a lane of their own, once
 they are planned.
 
 ## How this plan works
@@ -48,15 +48,15 @@ they are planned.
 
 | Ticket | Title | Size | Needs | Status |
 | --- | --- | --- | --- | --- |
-| [B1](#b1) | The walking skeleton: Python with uv, a test and CI on Linux | s | none | todo |
+| [B2](#b2) | The walking skeleton: Python with uv, a test and CI on Linux | s | none | todo |
 | [EO1](#eo1) | `project.yaml` | s | none | done |
 | [EO2](#eo2) | `CLAUDE.md` with the shared rules | s | none | done |
 | [EO3](#eo3) | Confidential work stays out | s | none | done |
 | [EO4](#eo4) | `.gitattributes` with LF line endings | s | none | done |
-| [EO5](#eo5) | Linux and the lowercase drive letter | xs | [B1](#b1) | todo |
+| [EO13](#eo13) | Linux and the lowercase drive letter | xs | [B2](#b2) | todo |
 | [EO6](#eo6) | An issue for every open ticket | s | the owner's approval | done |
-| [DOC1](#doc1) | The product's documents | tbd | `meta-eigenomar` ST1 | todo |
-| [SCM1](#scm1) | The ecosystem's SCM strategy | tbd | `meta-eigenomar` ST2 | todo |
+| [DOC7](#doc7) | The product's documents | tbd | `meta-eigenomar` ST1 | todo |
+| [SCM7](#scm7) | The ecosystem's SCM strategy | tbd | `meta-eigenomar` ST2 | todo |
 
 ## Parked
 
@@ -74,9 +74,9 @@ every later ticket builds on, with its tests and a CI job, set up once. It
 holds none of the product yet: what fusic makes, and how, is the first
 release's to plan.
 
-<a id="b1"></a>
+<a id="b2"></a>
 
-### B1 · The walking skeleton: Python with uv, a test and CI on Linux · todo
+### B2 · The walking skeleton: Python with uv, a test and CI on Linux · todo
 
 - **Do:** add the repository's first code, a Python project managed with
   `uv`, which does nothing yet but run, and the checks every later ticket
@@ -91,12 +91,12 @@ release's to plan.
   - **CI:** a GitHub Actions workflow on `ubuntu-latest`, on every push and
     pull request, runs ruff and pytest through `uv`, and ends with a summary
     of what it ran and every failure, as the ecosystem's conventions on
-    workflows ask. It's the job [EO5](#eo5) records as covering Linux, and
-    [SCM1](#scm1) later fits it to the ecosystem's SCM strategy.
+    workflows ask. It's the job [EO13](#eo13) records as covering Linux, and
+    [SCM7](#scm7) later fits it to the ecosystem's SCM strategy.
   - **Portability:** paths through `pathlib`, no absolute paths, and no
     script that exists only as `.bat`, `.ps1` or `.sh`.
-- **Needs:** nothing. DOC1 and SCM1 may land before or after it: SCM1 adapts
-  the CI job, and DOC1's documents describe what B1 leaves.
+- **Needs:** nothing. DOC7 and SCM7 may land before or after it: SCM7 adapts
+  the CI job, and DOC7's documents describe what B2 leaves.
 - **Done when:**
   - [ ] after `uv sync`, `uv run fusic --version` and
         `uv run python -m fusic --version` print the version on Windows.
@@ -180,16 +180,16 @@ Each step is small and independent, and can be done between feature work.
   and `git ls-files --eol` shows all four tracked files as `i/lf`, so
   `git add --renormalize .` has nothing to stage.
 
-<a id="eo5"></a>
+<a id="eo13"></a>
 
-#### EO5 · Linux and the lowercase drive letter · todo
+#### EO13 · Linux and the lowercase drive letter · todo
 
-- **Do:** once [B1](#b1) adds code and tests, record here what covers Linux:
-  B1's CI job on `ubuntu-latest`. Also check that the tests pass when
+- **Do:** once [B2](#b2) adds code and tests, record here what covers Linux:
+  B2's CI job on `ubuntu-latest`. Also check that the tests pass when
   started from a lowercase drive letter (`c:\`), as VS Code opens folders,
   since some tools break on the difference. The ecosystem's conventions give
-  the known fixes. The session that finishes B1 can do this too.
-- **Needs:** [B1](#b1), the first ticket that adds code, planned on
+  the known fixes. The session that finishes B2 can do this too.
+- **Needs:** [B2](#b2), the first ticket that adds code, planned on
   2026-11-24. Until then this ticket's issue was in the backlog with no
   blocked-by link.
 - **Done when:** this section says what runs the tests on Linux, and the
@@ -228,14 +228,14 @@ Answered by the owner on 2026-11-14:
 
 The ecosystem's contract, in `meta-eigenomar`, is adding two standards that
 every repository adopts: the documents each one keeps, and how each one
-manages its source and delivers it. DOC1 and SCM1 adopt them here, each once
+manages its source and delivers it. DOC7 and SCM7 adopt them here, each once
 its standard is designed. Until then, their issues stay in the backlog. With
 no code yet, both can land before the first release is planned, so its first
 code starts with them.
 
-<a id="doc1"></a>
+<a id="doc7"></a>
 
-### DOC1 · The product's documents · tbd
+### DOC7 · The product's documents · tbd
 
 - **Do:** write this repository's product vision, architecture, design,
   testing strategy, and verification and validation (V&V) documents, in the
@@ -250,15 +250,15 @@ code starts with them.
   names them under the standard's keys, and the ecosystem's validator passes.
   Nothing in them is confidential, since this repository is public.
 
-<a id="scm1"></a>
+<a id="scm7"></a>
 
-### SCM1 · The ecosystem's SCM strategy · tbd
+### SCM7 · The ecosystem's SCM strategy · tbd
 
 - **Do:** adopt the ecosystem's SCM strategy through its adoption checklist:
   CI, branching, protection of `main`, versioning and releases, the health
   report and dependency updates. There is no code, CI or deployment yet, so
   what needs code, such as the CI job, is set up with the first ticket that
-  adds code, and the CI job is what [EO5](#eo5) records as covering Linux.
+  adds code, and the CI job is what [EO13](#eo13) records as covering Linux.
 - **Needs:** the ecosystem's SCM strategy (`meta-eigenomar` ST2).
 - **Done when:** every item on the checklist is applied here, recorded here as
   an exception the strategy allows, with its reason, or, where it needs code,
@@ -267,6 +267,10 @@ code starts with them.
 
 ## Log
 
+- 2026-11-26 · plan · Renamed, since the ecosystem's lanes are numbered across its
+  repositories: B2 from `B1`, DOC7 from `DOC1`, EO13 from `EO5` and SCM7 from
+  `SCM1`. Their anchors, headings, index rows and issues changed with them, and
+  the log keeps the ids it was written with.
 - 2026-11-24 · plan · Added the bootstrap lane and B1, the walking skeleton,
   at the owner's request: Python with `uv`, pytest and ruff, and a CI job on
   `ubuntu-latest`, with none of the product yet. EO5's need is now B1, and
