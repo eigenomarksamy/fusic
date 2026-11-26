@@ -5,7 +5,8 @@ built yet. This plan holds the bootstrap (B2), the first code, which sets up
 the Python project, its tests and CI without any of the product yet. It also
 holds this repository's ecosystem onboarding (EO1–EO4, EO6 and EO13), of which only EO13 is
 open, waiting on B2, and its adoption of the ecosystem's standards (DOC7,
-SCM7). The first release's tickets go here, in a lane of their own, once
+SCM7), with its backlog's move into GitHub issues (MIG7). The first
+release's tickets go here, in a lane of their own, once
 they are planned.
 
 ## How this plan works
@@ -22,6 +23,7 @@ they are planned.
   | EO | Ecosystem onboarding |
   | DOC | The product's documents: vision, architecture, design, testing strategy, and verification and validation |
   | SCM | Source control and delivery: CI, branching, protection, releases and versioning |
+  | MIG | The backlog moves into GitHub issues: the cutover to GitHub as its home |
 
   The session that plans the first release adds its lane to this table, with
   a prefix other than EO. The ecosystem's shared rules, which `CLAUDE.md`
@@ -57,6 +59,7 @@ they are planned.
 | [EO6](#eo6) | An issue for every open ticket | s | the owner's approval | done |
 | [DOC7](#doc7) | The product's documents | tbd | `meta-eigenomar` ST1 | todo |
 | [SCM7](#scm7) | The ecosystem's SCM strategy | tbd | `meta-eigenomar` ST2 | todo |
+| [MIG7](#mig7) | The backlog moves into GitHub issues | xs | `meta-eigenomar` ST3 | todo |
 
 ## Parked
 
@@ -233,6 +236,10 @@ its standard is designed. Until then, their issues stay in the backlog. With
 no code yet, both can land before the first release is planned, so its first
 code starts with them.
 
+A third standard, `meta-eigenomar` ST3, makes GitHub's issues the home of
+every repository's backlog, and its decisions were made on 2026-11-27. MIG7
+moves this plan's tickets there, once ST3 is built.
+
 <a id="doc7"></a>
 
 ### DOC7 · The product's documents · tbd
@@ -265,8 +272,35 @@ code starts with them.
   named in the first code ticket's done-when. `project.yaml`'s `delivery` and
   `CLAUDE.md` say what runs, and the ecosystem's validator passes.
 
+<a id="mig7"></a>
+
+### MIG7 · The backlog moves into GitHub issues · tbd
+
+- **Do:** move this plan's planning to GitHub all at once, following the
+  cutover steps of the ecosystem's standard `meta-eigenomar` ST3. Each open
+  ticket's content moves into its issue's body, keeping its id and its issue's
+  `<id>: <title>`. [Parked](#parked)'s ideas become draft items in the Project
+  with status `idea`, hard needs are blocked-by links, and size, status and
+  priority live only in the Project. Done, dropped and moved tickets stay here
+  as a frozen archive, and each open ticket's anchor stays, linking its issue.
+- **Needs:** GitHub as the home of the backlog (`meta-eigenomar` ST3), which
+  includes the ecosystem's own cutover first and the backlog's backup. DOC7 is
+  a planning need: the plan's direction moves into the vision before this plan
+  retires.
+- **Done when:** every open ticket's content is in its issue, and this file
+  holds only the archive and the anchors. `project.yaml`'s `documents.plan` is
+  `null` and `planning.source` names GitHub, the ecosystem's validator passes,
+  nothing confidential is in any issue, since this repository is public, and
+  the owner approved the cutover. Bringing tickets up to the ecosystem's
+  ticket standard (`meta-eigenomar` ST4) isn't part of it: each ticket follows
+  it when it is picked up.
+
 ## Log
 
+- 2026-11-27 · plan · Added MIG7, in a new lane, at the owner's request: this
+  repository's cutover to GitHub as the home of its backlog, the ecosystem's
+  standard `meta-eigenomar` ST3, whose decisions were made that day. It needs
+  ST3, so its issue waits as `blocked`.
 - 2026-11-26 · plan · Renamed, since the ecosystem's lanes are numbered across its
   repositories: B2 from `B1`, DOC7 from `DOC1`, EO13 from `EO5` and SCM7 from
   `SCM1`. Their anchors, headings, index rows and issues changed with them, and
