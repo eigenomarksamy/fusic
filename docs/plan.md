@@ -1,10 +1,10 @@
 # fusic plan
 
-fusic is a factory of music. Its development starts from scratch: nothing is
-built yet. This plan holds the bootstrap (B2), the first code, which sets up
-the Python project, its tests and CI without any of the product yet. It also
+fusic is a factory of music. Its development started from scratch, and none
+of the product is built yet. This plan holds the bootstrap (B2), the first
+code, done, which set up the Python project, its tests and CI. It also
 holds this repository's ecosystem onboarding (EO1–EO4, EO6 and EO13), of which only EO13 is
-open, waiting on B2, and its adoption of the ecosystem's standards (DOC7,
+open, and its adoption of the ecosystem's standards (DOC7,
 SCM7), with its backlog's move into GitHub issues (MIG7). The first
 release's tickets go here, in a lane of their own, once
 they are planned.
@@ -50,7 +50,7 @@ they are planned.
 
 | Ticket | Title | Size | Needs | Status |
 | --- | --- | --- | --- | --- |
-| [B2](#b2) | The walking skeleton: Python with uv, a test and CI on Linux | s | none | todo |
+| [B2](#b2) | The walking skeleton: Python with uv, a test and CI on Linux | s | none | done |
 | [EO1](#eo1) | `project.yaml` | s | none | done |
 | [EO2](#eo2) | `CLAUDE.md` with the shared rules | s | none | done |
 | [EO3](#eo3) | Confidential work stays out | s | none | done |
@@ -79,7 +79,7 @@ release's to plan.
 
 <a id="b2"></a>
 
-### B2 · The walking skeleton: Python with uv, a test and CI on Linux · todo
+### B2 · The walking skeleton: Python with uv, a test and CI on Linux · done
 
 - **Do:** add the repository's first code, a Python project managed with
   `uv`, which does nothing yet but run, and the checks every later ticket
@@ -105,7 +105,7 @@ release's to plan.
         `uv run python -m fusic --version` print the version on Windows.
   - [x] `uv run ruff check`, `uv run ruff format --check` and `uv run pytest`
         pass on Windows, started from `c:\` as well as from `C:\`.
-  - [ ] the workflow passes on `ubuntu-latest`, and its run's summary lists
+  - [x] the workflow passes on `ubuntu-latest`, and its run's summary lists
         the checks it ran.
   - [x] the README says what to install on each platform, `uv` alone, and
         how to set up and run the tests. `CLAUDE.md`'s commands section lists
@@ -116,6 +116,14 @@ release's to plan.
         `ci: github-actions`, and the ecosystem's validator passes.
   - [x] no build step or test needs anything but `uv` and the dependencies
         it installs.
+- **Result:** done 2026-11-27. `fusic` is a Python 3.14 package in
+  `src/fusic/`, built with uv's own backend, whose command, the same as
+  `python -m fusic`, prints its version and its help. pytest tests the command
+  three ways, and ruff lints and formats, including the code blocks in
+  Markdown. `.github/workflows/ci.yml` runs `uv sync --locked`, ruff and
+  pytest on `ubuntu-latest` for every push and pull request, with a summary of
+  each step, and its first run passed on Python 3.14.4, the runner's own,
+  where Windows used 3.14.9. `ae3fc1e`.
 
 ## Ecosystem onboarding
 
@@ -297,6 +305,9 @@ moves this plan's tickets there, once ST3 is built.
 
 ## Log
 
+- 2026-11-27 · B2 · B2 is done: the walking skeleton, a Python project with
+  `uv`, ruff and pytest, and CI on `ubuntu-latest`, whose first run passed.
+  EO13 waits only on its own check now. `ae3fc1e`.
 - 2026-11-27 · plan · Added MIG7, in a new lane, at the owner's request: this
   repository's cutover to GitHub as the home of its backlog, the ecosystem's
   standard `meta-eigenomar` ST3, whose decisions were made that day. It needs
