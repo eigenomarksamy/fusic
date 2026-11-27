@@ -16,12 +16,12 @@ links:
 
 documents:
   plan: docs/plan.md
-  architecture: null               # no code yet
+  architecture: null               # none yet: DOC7 writes it
   engineering: null
   decisions: null
 
 delivery:
-  ci: none
+  ci: github-actions
   releases: none
   deployment: none
 

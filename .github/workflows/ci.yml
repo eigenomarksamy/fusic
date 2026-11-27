@@ -1,0 +1,66 @@
+# Checks every push and pull request: ruff's lint and format check, and pytest, through uv.
+# Linux covers Linux here. Windows is covered by local development (the README's setup).
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: checks (ruff, pytest)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        # naming bash turns on pipefail, so a failed check still fails through tee
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+      - name: Sync
+        id: sync
+        run: uv sync --locked
+      - name: Lint
+        id: lint
+        run: uv run ruff check --output-format concise 2>&1 | tee lint.log
+      - name: Format
+        id: format
+        if: ${{ !cancelled() && steps.sync.outcome == 'success' }}
+        run: uv run ruff format --check 2>&1 | tee format.log
+      - name: Test
+        id: test
+        if: ${{ !cancelled() && steps.sync.outcome == 'success' }}
+        run: uv run pytest 2>&1 | tee test.log
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "## checks"
+            echo
+            echo "${{ job.status == 'success' && 'done' || 'failed' }}"
+            echo
+            echo "- sync (uv sync --locked): ${{ steps.sync.outcome }}"
+            echo "- lint (ruff check): ${{ steps.lint.outcome }}"
+            if [ -f lint.log ] && [ "${{ steps.lint.outcome }}" = failure ]; then
+              grep -E '^[^ ]+:[0-9]+:[0-9]+: ' lint.log | head -20 | sed 's/^/  - /' || true
+            fi
+            echo "- format (ruff format --check): ${{ steps.format.outcome }}"
+            if [ -f format.log ] && [ "${{ steps.format.outcome }}" = failure ]; then
+              grep -E '^Would reformat' format.log | head -20 | sed 's/^/  - /' || true
+            fi
+            echo "- tests (pytest): ${{ steps.test.outcome }}"
+            if [ -f test.log ]; then
+              tail -n 1 test.log | sed -E 's/^=+ (.*) =+$/  - \1/'
+              grep -E '^(FAILED|ERROR) ' test.log | head -20 | sed 's/^/  - /' || true
+            fi
+            if [ "${{ steps.sync.outcome }}" != success ]; then
+              echo "- uv sync didn't succeed, so nothing else ran: is uv.lock in step with pyproject.toml?"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -101,20 +101,20 @@ release's to plan.
 - **Needs:** nothing. DOC7 and SCM7 may land before or after it: SCM7 adapts
   the CI job, and DOC7's documents describe what B2 leaves.
 - **Done when:**
-  - [ ] after `uv sync`, `uv run fusic --version` and
+  - [x] after `uv sync`, `uv run fusic --version` and
         `uv run python -m fusic --version` print the version on Windows.
-  - [ ] `uv run ruff check`, `uv run ruff format --check` and `uv run pytest`
+  - [x] `uv run ruff check`, `uv run ruff format --check` and `uv run pytest`
         pass on Windows, started from `c:\` as well as from `C:\`.
   - [ ] the workflow passes on `ubuntu-latest`, and its run's summary lists
         the checks it ran.
-  - [ ] the README says what to install on each platform, `uv` alone, and
+  - [x] the README says what to install on each platform, `uv` alone, and
         how to set up and run the tests. `CLAUDE.md`'s commands section lists
         the setup, test, lint and run commands, each working on Windows and
         Linux, and what to run before pushing, and its delivery section says
         what CI runs.
-  - [ ] in the same change as the workflow, `project.yaml`'s `delivery` says
+  - [x] in the same change as the workflow, `project.yaml`'s `delivery` says
         `ci: github-actions`, and the ecosystem's validator passes.
-  - [ ] no build step or test needs anything but `uv` and the dependencies
+  - [x] no build step or test needs anything but `uv` and the dependencies
         it installs.
 
 ## Ecosystem onboarding

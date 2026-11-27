@@ -1,0 +1,11 @@
+# uv's environment and Python's caches
+.venv/
+__pycache__/
+*.py[cod]
+
+# tools' caches and build output
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
