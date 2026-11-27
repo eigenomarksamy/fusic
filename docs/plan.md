@@ -3,8 +3,8 @@
 fusic is a factory of music. Its development started from scratch, and none
 of the product is built yet. This plan holds the bootstrap (B2), the first
 code, done, which set up the Python project, its tests and CI. It also
-holds this repository's ecosystem onboarding (EO1–EO4, EO6 and EO13), of which only EO13 is
-open, and its adoption of the ecosystem's standards (DOC7,
+holds this repository's ecosystem onboarding (EO1–EO4, EO6 and EO13), all
+done, and its adoption of the ecosystem's standards (DOC7,
 SCM7), with its backlog's move into GitHub issues (MIG7). The first
 release's tickets go here, in a lane of their own, once
 they are planned.
@@ -55,7 +55,7 @@ they are planned.
 | [EO2](#eo2) | `CLAUDE.md` with the shared rules | s | none | done |
 | [EO3](#eo3) | Confidential work stays out | s | none | done |
 | [EO4](#eo4) | `.gitattributes` with LF line endings | s | none | done |
-| [EO13](#eo13) | Linux and the lowercase drive letter | xs | [B2](#b2) | todo |
+| [EO13](#eo13) | Linux and the lowercase drive letter | xs | [B2](#b2) | done |
 | [EO6](#eo6) | An issue for every open ticket | s | the owner's approval | done |
 | [DOC7](#doc7) | The product's documents | tbd | `meta-eigenomar` ST1 | todo |
 | [SCM7](#scm7) | The ecosystem's SCM strategy | tbd | `meta-eigenomar` ST2 | todo |
@@ -136,9 +136,9 @@ changing how it is built or delivered.
 
 **Stays as it is.**
 
-- **Build, tests, CI, releases and deployment:** none yet. The first tickets
-  choose the stack, and how fusic builds, tests, releases and deploys stays
-  this repository's own choice.
+- **Build, tests, CI, releases and deployment:** [B2](#b2) chose the build,
+  tests and CI, and there are no releases or deployment yet. How fusic
+  builds, tests, releases and deploys stays this repository's own choice.
 - **Branching:** work lands on `main`.
 - **Documents:** `README.md`, this plan and `CLAUDE.md`, where they are.
 
@@ -193,7 +193,7 @@ Each step is small and independent, and can be done between feature work.
 
 <a id="eo13"></a>
 
-#### EO13 · Linux and the lowercase drive letter · todo
+#### EO13 · Linux and the lowercase drive letter · done
 
 - **Do:** once [B2](#b2) adds code and tests, record here what covers Linux:
   B2's CI job on `ubuntu-latest`. Also check that the tests pass when
@@ -205,6 +205,14 @@ Each step is small and independent, and can be done between feature work.
   blocked-by link.
 - **Done when:** this section says what runs the tests on Linux, and the
   tests pass when started from `c:\` as well as from `C:\`.
+- **Result:** done 2026-11-27. Linux is covered by B2's CI job,
+  `.github/workflows/ci.yml` on `ubuntu-latest`, which runs ruff and pytest
+  through `uv` on every push and pull request, and Windows by local
+  development. `uv run pytest`, `uv run ruff check` and
+  `uv run ruff format --check` pass when started from the repository's root
+  with a lowercase drive letter (`c:`) and with an uppercase one (`C:`), each
+  through `cmd /c "cd /d …"`, with no fix needed: nothing in the tests
+  compares paths as strings.
 
 <a id="eo6"></a>
 
@@ -305,6 +313,9 @@ moves this plan's tickets there, once ST3 is built.
 
 ## Log
 
+- 2026-11-27 · EO13 · EO13 is done: B2's CI job covers Linux, and the tests
+  pass when started from `c:\` as well as from `C:\`. The ecosystem
+  onboarding is complete.
 - 2026-11-27 · B2 · B2 is done: the walking skeleton, a Python project with
   `uv`, ruff and pytest, and CI on `ubuntu-latest`, whose first run passed.
   EO13 waits only on its own check now. `ae3fc1e`.
